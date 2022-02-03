@@ -8,6 +8,10 @@ import { gsap } from "gsap";
 
 
 const Navigation = (handleBtnClick) => {
+  const handleLogOutUser = () => {
+    localStorage.removeItem('user')
+    window.location = '/login'
+  }
 
     //Animations
   const tl = gsap.timeline({ defaults: { ease: 'power1.out' } })
@@ -43,9 +47,9 @@ const Navigation = (handleBtnClick) => {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link className="nav-links hamburgerToggles" target="_blank" href="/profile">Profile</Nav.Link>
               <Nav.Link className="nav-links" target="_blank" href="/contact">Contact</Nav.Link>
-              <Nav.Link className="nav-links" target="_blank" href="/login">Sign Up</Nav.Link>
+              <Nav.Link className="nav-links" target="_blank" href="/login">Sign In</Nav.Link>
               <Nav.Link className="nav-links" target="_blank" href="/register">Register</Nav.Link> 
-              <Nav.Link className="nav-links" target="_blank"href="/login">Logout</Nav.Link>
+              <Nav.Link onClick={handleLogOutUser}className="nav-links" target="_blank"href="/login">Logout</Nav.Link>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
