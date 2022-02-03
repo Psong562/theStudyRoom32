@@ -37,38 +37,37 @@ app.get('*', (req, res) => res.sendFile(join(__dirname, 'client', 'build', 'inde
 
 
 // this section is for Heroku and change info on texteditor as well
-// const SERVER = app.listen(process.env.PORT || 3001)
+const SERVER = app.listen(process.env.PORT || 3001)
 
 
-// require('./db')
-//   .then(() => SERVER)
-//   .catch(err => console.log(err))
+require('./db')
+  .then(() => SERVER)
+  .catch(err => console.log(err))
 
 
-// const io = require("socket.io")(SERVER, {
-//   cors: {
-//     // origin: "https://lofistudy.herokuapp.com/",
-//     origin: "https://localhost:3000",
-//     methods: ["GET", "POST"]
-//   }
-// })
+const io = require("socket.io")(SERVER, {
+  cors: {
+    origin: "https://thelofistudyroom32.herokuapp.com/",
+    methods: ["GET", "POST"]
+  }
+})
 
 
 
 // this section is for local
-require('./db')
-  .then(() => app.listen(process.env.PORT || 3001))
-  .catch(err => console.log(err))
+// require('./db')
+//   .then(() => app.listen(process.env.PORT || 3001))
+//   .catch(err => console.log(err))
 
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/lofiStudyRoom_db');
+// // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/lofiStudyRoom_db');
 
-const io = require("socket.io")(8080, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"]
-  }
-})
+// const io = require("socket.io")(8080, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"]
+//   }
+// })
 
 
 
