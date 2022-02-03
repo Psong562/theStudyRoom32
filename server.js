@@ -36,7 +36,7 @@ app.use(require('./routes'))
 app.get('*', (req, res) => res.sendFile(join(__dirname, 'client', 'build', 'index.html')))
 
 
-// this section is for Heroku and change info on texteditor as well
+// this section is for Heroku and change info on texteditor as well and remember to remove spaces
 const SERVER = app.listen(process.env.PORT || 3001)
 
 
